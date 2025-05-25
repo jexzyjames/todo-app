@@ -187,7 +187,7 @@ const TodoContainer = ({theme}) => {
               <span className="text-gray-400">No todos available</span>
             </div>
           ) :
-            <div className={` ${theme === 'light' ? 'bg-white' : 'bg-[hsl(235,_24%,_19%)] text-white'}  shadow-lg rounded-sm flex w-[380px] mx-auto md:justify-between gap-3 md:w-full items-center px-4 py-3 mt-2`}>
+            <div className={` ${theme === 'light' ? 'bg-white' : 'bg-[hsl(235,_24%,_19%)] text-white'}  shadow-lg rounded-sm flex max-w-[400px] w-[350px] md:mx-auto md:justify-start gap-3 md:w-full items-center px-4 py-3 mt-2`}>
               <span className="text-gray-400">
                 {todos.length} {todos.length === 1 ? "todo" : "items left"} 
               </span>
