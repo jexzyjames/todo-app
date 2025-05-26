@@ -4,17 +4,17 @@ import cross from "../assets/images/icon-cross.svg";
 import { useState } from "react";
 const TodoContainer = ({ theme }) => {
   const [todo, setTodo] = useState("");
-  const visibleTodos = todos.filter((todo) => {
-    if (pages === "active") return !todo.completed;
-    if (pages === "completed") return todo.completed;
-    return true;
-  });
-  const [pages, setPages] = useState("all");
   const [todos, setTodos] = useState([
     { id: 1, text: "Complete the project", completed: false },
     { id: 2, text: "Read a book", completed: true },
     { id: 3, text: "Go for a walk", completed: false },
   ]);
+  const [pages, setPages] = useState("all");
+  const visibleTodos = todos.filter((todo) => {
+    if (pages === "active") return !todo.completed;
+    if (pages === "completed") return todo.completed;
+    return true;
+  });
   useEffect(() => {
     const storedTodos = localStorage.getItem("TODOS");
     if (storedTodos) {
@@ -225,7 +225,7 @@ const TodoContainer = ({ theme }) => {
             >
               <span className="text-gray-400">
                 {visibleTodos.length}{" "}
-                {visibleTodos.length === 1 ? "todo" : "items"} {pages}
+                {visibleTodos.length === 1 ? "todo" : "items"} left
               </span>
 
               <div
@@ -255,18 +255,18 @@ const TodoContainer = ({ theme }) => {
                 >
                   Active
                 </p>
-                <p
+              { visibleTodos.length > 0 && <p
                   className={`cursor-pointer ${
                     pages === "completed"
                       ? "text-blue-500 cursor-pointer"
                       : "cursor-pointer"
-                  }`} // Highlight 'active' page
+                  }`} 
                   onClick={() => {
                     setPages("completed");
                   }}
                 >
                   Completed
-                </p>
+                </p> }
               </div>
 
               <span
